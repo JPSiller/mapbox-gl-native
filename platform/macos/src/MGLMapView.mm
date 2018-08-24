@@ -59,6 +59,7 @@
 #import "NSColor+MGLAdditions.h"
 #import "NSImage+MGLAdditions.h"
 #import "NSPredicate+MGLPrivateAdditions.h"
+#import "MGLLogging_Private.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGL/gl.h>
@@ -257,6 +258,7 @@ public:
 }
 
 - (void)commonInit {
+    mgl_log_info(@"Initializing.");
     _isTargetingInterfaceBuilder = NSProcessInfo.processInfo.mgl_isInterfaceBuilderDesignablesAgent;
 
     // Set up cross-platform controllers and resources.
@@ -317,6 +319,7 @@ public:
     _mbglMap->jumpTo(options);
     _pendingLatitude = NAN;
     _pendingLongitude = NAN;
+    mgl_log_info(@"Initialization completed.");
 }
 
 - (mbgl::Size)size {
